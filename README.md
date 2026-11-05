@@ -1,4 +1,5 @@
 # B1 - Trabajo Consulta 1: Funciones Anónimas
 ## Parte 1 – Explorar: la programación funcional en el mundo real
 **APACHE Spark**
+
 Lo que resuelve APACHE Spark es que procesa grandes cantidades de datos que estan distribuidos en un cluster (un cluster es un grupo de compus que estan conectadas a una red, trabajando en conjunto como si fueran una computadora mas potente). El lenguaje de programacion que se usa es Scala, tambien se usa una API de colecciones distribuidas como RDD o DATASET, se usan funciones anonimas. La ventaja es que la persona que este programando puede decidir que hacer con cada cosa y Spark hace que las ordenes dadas se repartan entre las maquinas.
