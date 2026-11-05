@@ -64,7 +64,7 @@ Para cada tipo de problema documenta:
 
 **2. Solución con funciones anónimas** en los tres lenguajes:
 
-&nbsp;**Scala**, con las operaciones vistas en clase.
+     **Scala**, con las operaciones vistas en clase.
   
   **Java**, con Streams.
   
