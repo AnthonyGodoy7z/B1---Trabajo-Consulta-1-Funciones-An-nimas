@@ -21,3 +21,15 @@ Es una funcion que no tiene nombre y se la escribe en el mismo lugar donde se la
 val f = (x: Double) => x * 2
 ```
 
+**¿En qué se diferencia de una función nombrada? Escribe la misma lógica de ambas formas.**
+
+La diferencia es que la nombrada tiene un identificador y se puede reutilizar en cualquier parte del codigo mientras que la anonima es donde se escribe se usa, tienen la misma logica.
+
+```scala
+//funcion nombrada
+def par(n: Int): Boolean = n % 2 == 0
+List(1, 2, 3, 4).filter(par)
+//funcion anonima
+List(1, 2, 3, 4).filter(_ % 2 == 0)
+```
+
