@@ -58,4 +58,15 @@ Cada operación vista en clase resuelve un tipo de problema. Documenta al menos 
 
 <img width="608" height="289" alt="image" src="https://github.com/user-attachments/assets/2ceec814-3b93-4655-99d3-56aeb954c013" />
 
+Para cada tipo de problema documenta:
+
+**1. Situación real:** un ejemplo concreto donde aparece ese problema (por ejemplo, “un banco necesita detectar las transacciones mayores a $1 000”).
+
+**2. Solución con funciones anónimas** en los tres lenguajes:
+
+  **Scala**, con las operaciones vistas en clase.
+  **Java**, con Streams.
+  **Python**, con lambda y las funciones equivalentes (por ejemplo, map, filter, max con key o functools.reduce).
+
+**3. Salida** de cada versión, para comprobar que las tres dan el mismo resultado.
 
