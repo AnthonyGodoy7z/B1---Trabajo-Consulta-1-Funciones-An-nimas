@@ -53,3 +53,9 @@ f(5)
 Esta es la parte central del trabajo. Vas a identificar los tipos de problemas que se resuelven con funciones anónimas y a resolver cada uno con lambdas en Scala, Java y Python. La comparación entre los lenguajes se hace en la Parte 5.
 
 **3.1 Catálogo de tipos de problemas**
+
+Cada operación vista en clase resuelve un tipo de problema. Documenta al menos 4de los 7 tipos de la siguiente tabla:
+
+<img width="608" height="289" alt="image" src="https://github.com/user-attachments/assets/2ceec814-3b93-4655-99d3-56aeb954c013" />
+
+
