@@ -32,4 +32,12 @@ List(1, 2, 3, 4).filter(par)
 //funcion anonima
 List(1, 2, 3, 4).filter(_ % 2 == 0)
 ```
+**¿Qué significa que las funciones sean ciudadanos de primera clase? ¿Por qué eso permite pasar una lambda a map o filter?**
+
+Eso significa que la funcion es tratada como cualquier otro valor pudiendo ser guardada dentro de una variable, pasar como argumento y ser devuelta como resultado, por eso se permite que map y filtren puedan pasar una lambda ya que son funciones de orden superior que esperan otra funcion como un parametro.
+
+```scala
+val f = (x: Int) => x * 2
+List(1, 2, 3, 4).map(f)
+```
 
