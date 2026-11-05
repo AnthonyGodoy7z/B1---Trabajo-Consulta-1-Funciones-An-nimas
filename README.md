@@ -11,6 +11,8 @@ Twitter hizo una migracion a Scala de su backend para que se pueda manejar de me
 
 ## Parte 2 – Entender: ¿qué es una función anónima?
 Responde con tus palabras y apoya cada respuesta con un fragmento corto de código:
+
 **¿Qué es una función anónima y de dónde viene el nombre lambda?**
+
 Es una funcion que no tiene nombre 
 
