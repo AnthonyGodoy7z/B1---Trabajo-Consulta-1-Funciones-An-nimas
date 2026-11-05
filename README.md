@@ -15,5 +15,9 @@ Responde con tus palabras y apoya cada respuesta con un fragmento corto de códi
 
 **¿Qué es una función anónima y de dónde viene el nombre lambda?**
 
-Es una funcion que no tiene nombre 
+Es una funcion que no tiene nombre y se la escribe en el mismo lugar donde se la va a usar, el nombre viene del calculo lambda donde las funciones se escribian con la letra griega λ
+
+```scala
+val f = (x: Double) => x * 2
+```
 
