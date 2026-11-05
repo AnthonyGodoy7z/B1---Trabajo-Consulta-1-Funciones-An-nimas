@@ -65,7 +65,9 @@ Para cada tipo de problema documenta:
 **2. Solución con funciones anónimas** en los tres lenguajes:
 
   **Scala**, con las operaciones vistas en clase.
+  
   **Java**, con Streams.
+  
   **Python**, con lambda y las funciones equivalentes (por ejemplo, map, filter, max con key o functools.reduce).
 
 **3. Salida** de cada versión, para comprobar que las tres dan el mismo resultado.
