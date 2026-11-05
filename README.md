@@ -49,3 +49,7 @@ val multi = 3
 val f = (x: Int) => x * multi //se usa la variable multi que esta fuera de este lambda
 f(5)
 ```
+## Parte 3 – Aplicar: ¿en qué problemas sirven las funciones anónimas?
+Esta es la parte central del trabajo. Vas a identificar los tipos de problemas que se resuelven con funciones anónimas y a resolver cada uno con lambdas en Scala, Java y Python. La comparación entre los lenguajes se hace en la Parte 5.
+
+**3.1 Catálogo de tipos de problemas**
