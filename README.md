@@ -40,4 +40,12 @@ Eso significa que la funcion es tratada como cualquier otro valor pudiendo ser g
 val f = (x: Int) => x * 2
 List(1, 2, 3, 4).map(f)
 ```
+**¿Qué es un closure? Muestra una lambda que use una variable definida fuera de ella**
 
+Es una funcion anonima o una lambda que recuerda y permite acceder a variables definidas que estan fuera de ella y las puede usar aunque estas ya no esten activas
+
+```scala
+val multi = 3
+val f = (x: Int) => x * multi //se usa la variable multi que esta fuera de este lambda
+f(5)
+```
