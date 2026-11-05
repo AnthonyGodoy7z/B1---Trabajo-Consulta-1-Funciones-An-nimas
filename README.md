@@ -72,3 +72,5 @@ Para cada tipo de problema documenta:
 
 **3. Salida** de cada versión, para comprobar que las tres dan el mismo resultado.
 
+**Seleccion(filter)**
+
