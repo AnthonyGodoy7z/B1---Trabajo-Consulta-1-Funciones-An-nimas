@@ -89,6 +89,12 @@ System.out.println("Selección: " + mas100 + "\n");
 ```
 Salida: Selección: [Laptop, Monitor, Silla, Escritorio]
 
+**Python**
+```python
+print("Selección:", [p.nombre for p in filter(lambda p: p.precio > 100, productos)])
+```
+Salida: Selección: ['Laptop', 'Monitor', 'Silla', 'Escritorio']
+
 ### Transformación(map)
 
 Situación real: el área de contabilidad necesita el valor de inventario de cada producto (precio por stock).
@@ -105,7 +111,13 @@ List<Double> inventario = productos.stream().map(p -> p.precio() * p.stock()).to
 System.out.println("Transformacion: " + inventario + "\n");
 ```
 Salida: Transformacion: [4250.0, 1200.0, 1350.0, 2640.0, 1040.0, 1000.0, 875.0, 700.0, 400.0, 600.0]
- 
+
+**Python**
+```python
+print("Transformación:", list(map(lambda p: p.precio * p.stock, productos)))
+```
+Salida: Transformación: [4250.0, 1200.0, 1350.0, 2640.0, 1040.0, 1000.0, 875.0, 700.0, 400.0, 600.0]
+
 ### Validación(exists, forall)
 
 Situación real: antes de una auditoría, se quiere saber si algún producto cuesta más de $800 y si todos tienen stock.
@@ -127,6 +139,13 @@ System.out.println("Validación: " + validacion + "\n");
 ```
 Salida: Validación: [true, true]
 
+**Python**
+```python
+print("Validación: hay caro =", any(map(lambda p: p.precio > 800, productos)),
+      ", todos con stock =", all(map(lambda p: p.stock > 0, productos)))
+```
+Salida: Validación: hay caro = True , todos con stock = True
+
 ### Conteo(count)
 
 Situación real: el bodeguero quiere saber cuántos productos tienen menos de 10 unidades para reabastecer.
@@ -143,3 +162,12 @@ long pocos = productos.stream().filter(p -> p.stock() < 10).count();
 System.out.println("Conteo: " + pocos + "\n");
 ```
 Salida: Conteo: 3
+
+**Python**
+```python
+print("Conteo:", len(list(filter(lambda p: p.stock < 10, productos))))
+```
+Salida: Conteo: 3
+
+## Parte 4 – Ampliar: cuatro operaciones nuevas
+Las operaciones vistas en clase (map, filter, exists, forall, count, maxBy, minBy, flatMap, foldLeft y scanLeft) son solo una parte de lo que ofrecen las colecciones. Investiga 4 operaciones diferentes a estas que te parezcan útiles para resolver problemas.
