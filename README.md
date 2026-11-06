@@ -263,10 +263,12 @@ Tras groupBy cada elemento es una pareja, g._1 es la categoría y g._2 es la lis
 Resultado: Papelería con 700 y Electrónica con 107. Muebles (37) y Accesorios (15) quedan fuera.
 
 ## Parte 5. Comparar y concluir
+### 5.1 Scala, Java y Python frente a frente
+
 | Criterio | Scala | Java | Python |
 |---|---|---|---|
 | Sintaxis de la lambda | `p => p.precio > 100` o `_.precio` | `p -> p.precio() > 100` | `lambda p: p.precio > 100` |
-| Cómo se declara el tipo | Se infiere; se puede anotar `(p: Producto) =>` | Se infiere del contexto del Stream | No se declara (tipado dinámico) |
-| Operaciones con listas | Muchas métodos directos en la lista (filter, map, groupBy, partition, foldLeft...) | Se necesita `.stream()` y terminar con `.toList()` o `collect` | Funciones sueltas (map, filter, max, reduce) y comprensiones de listas |
-| Restricción del lenguaje | Ninguna importante para este trabajo | Solo una expresión o bloque con llaves; las variables capturadas deben ser efectivamente finales | La lambda solo puede contener una expresión (sin sentencias) |
+| Cómo se declara el tipo | Se infiere, se puede anotar `(p: Producto) =>` | Se infiere del contexto del Stream | No se declara (tipado dinámico) |
+| Operaciones con listas | Muchas métodos directos en la lista como filter, map, groupBy, partition, foldLeft... | Se necesita `.stream()` y terminar con `.toList()` o `collect` | Funciones sueltas (map, filter, max, reduce) y comprensiones de listas |
+| Restricción del lenguaje | Ninguna importante para este trabajo | Solo una expresión o bloque con llaves ya que las variables capturadas deben ser efectivamente finales | La lambda solo puede contener una expresión (sin sentencias) |
 | Legibilidad (opinión) | Alta, es la más corta | Media, más verboso | Alta para casos simples, baja si se anidan varias lambdas |
