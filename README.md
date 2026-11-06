@@ -89,7 +89,7 @@ System.out.println("Selección: " + mas100 + "\n");
 ```
 Salida: Selección: [Laptop, Monitor, Silla, Escritorio]
 
-**Transformación(map)**
+### Transformación(map)
 
 Situación real: el área de contabilidad necesita el valor de inventario de cada producto (precio por stock).
 
@@ -142,4 +142,4 @@ Salida: Int = 3
 long pocos = productos.stream().filter(p -> p.stock() < 10).count();
 System.out.println("Conteo: " + pocos + "\n");
 ```
-Salida: Contero: 3
+Salida: Conteo: 3
