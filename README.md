@@ -72,7 +72,7 @@ Para cada tipo de problema documenta:
 
 **3. Salida** de cada versión, para comprobar que las tres dan el mismo resultado.
 
-**Seleccion(filter)**
+### Seleccion(filter)
 
 Situación real: una tienda quiere listar los productos que cuestan más de 100 dolares para una promoción.
 
