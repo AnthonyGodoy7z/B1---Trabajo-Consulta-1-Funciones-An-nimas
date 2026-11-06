@@ -286,6 +286,6 @@ Resultado: Papelería con 700 y Electrónica con 107. Muebles (37) y Accesorios 
 
 **¿En qué tipo de problema encontraste más diferencias entre lenguajes y por qué?** En el conteo ya que en Scala, count recibe la lambda directamente, en Java hay que usar filter y luego count() que devuelve un long, y en Python hay que usar filter, convertirlo a lista y aplicar len. La misma pregunta se resuelve con una operación en Scala, dos en Java y tres en Python.
 
-### Conclusiones
+### 5.2 Conclusión
 Las funciones anónimas permiten pasar la regla (la condición o la transformación) como argumento, sin escribir ciclos ni variables auxiliares, en este trabajo, seleccionar, transformar, validar y contar productos se resolvió con una lambda de una línea, y en la Parte 4 las operaciones nuevas se encadenaron con filter y map cada una con su propia lambda.
 Apache Spark aplica la misma idea a gran escala, en el conteo de palabras, flatMap, map y reduceByKey reciben lambdas que se ejecutan en paralelo en el clúster, scala fue el lenguaje más directo pero en los tres el principio es el mismo.
