@@ -6,6 +6,14 @@ Antes de programar, investiga dónde y para qué se usa la programación funcion
 
 Lo que resuelve APACHE Spark es que procesa grandes cantidades de datos que estan distribuidos en un cluster (un cluster es un grupo de compus que estan conectadas a una red, trabajando en conjunto como si fueran una computadora mas potente). El lenguaje de programacion que se usa es Scala, tambien se usa una API de colecciones distribuidas como RDD o DATASET, se usan funciones anonimas. La ventaja es que la persona que este programando puede decidir que hacer con cada cosa y Spark hace que las ordenes dadas se repartan entre las maquinas.
 
+Fuente: documentación oficial, Spark RDD Programming Guide (https://spark.apache.org/docs/latest/rdd-programming-guide.html).
+
+FRAGMENTO DE CODIGO
+```scala
+val counts = textFile.flatMap(line => line.split(" "))
+                     .map(word => (word, 1))
+                     .reduceByKey(_ + _)
+```
 **TWITTER BACKEND**
 
 Twitter hizo una migracion a Scala de su backend para que se pueda manejar de mejor manera toda la concurrecia de datos con codigo mas corto y que se menos mutable. La ventaja es el estilo funcional que usan como colecciones inmutables y funciones como valores, reduciendo los errores en los sistemes concurrentes.
@@ -272,3 +280,11 @@ Resultado: Papelería con 700 y Electrónica con 107. Muebles (37) y Accesorios 
 | Operaciones con listas | Muchas métodos directos en la lista como filter, map, groupBy, partition, foldLeft... | Se necesita `.stream()` y terminar con `.toList()` o `collect` | Funciones sueltas (map, filter, max, reduce) y comprensiones de listas |
 | Restricción del lenguaje | Ninguna importante para este trabajo | Solo una expresión o bloque con llaves ya que las variables capturadas deben ser efectivamente finales | La lambda solo puede contener una expresión (sin sentencias) |
 | Legibilidad (opinión) | Alta, es la más corta | Media, más verboso | Alta para casos simples, baja si se anidan varias lambdas |
+
+**¿En qué lenguaje fue más natural resolver los problemas?** En Scala porque las operaciones están directamente en la lista y se encadenan sin pasos intermedios.
+
+**¿En qué tipo de problema encontraste más diferencias entre lenguajes y por qué?** En el conteo ya que en Scala, count recibe la lambda directamente, en Java hay que usar filter y luego count() que devuelve un long, y en Python hay que usar filter, convertirlo a lista y aplicar len. La misma pregunta se resuelve con una operación en Scala, dos en Java y tres en Python.
+
+### Conclusiones
+Las funciones anónimas permiten separar qué se hace con la lista (recorrer, filtrar, sumar) de cómo se decide cada caso, con ellas no se escriben ciclos ni variables auxiliares, se pasa la regla como argumento y la operación hace el recorrido haciendo producir código más corto, más fácil de leer y con menos errores y se aplica igual a una lista de 10 elementos que a millones.
+El caso de Apache Spark lo muestra, en el conteo de palabras, flatMap, map y reduceByKey reciben lambdas pequeñas, y Spark puede ejecutarlas en paralelo en muchas máquinas porque cada lambda no depende del resto. Es la misma idea que usamos en la Parte 3 con filter y foldLeft, solo que a mayor escala.
