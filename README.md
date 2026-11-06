@@ -181,7 +181,9 @@ Puedes elegir entre las siguientes o proponer otras que encuentres en la documen
 
 ### Ficha 1: sortBy
 • **Qué hace:** ordena la lista según un criterio, de menor a mayor.
+
 • **Qué función anónima recibe:** recibe un producto y devuelve el valor por el que se ordena (Double, Int, String).
+
 • **Ejemplo:**
 ```scala
 productos.sortBy(_.precio).map(_.nombre)
@@ -191,7 +193,9 @@ productos.sortBy(_.precio).map(_.nombre)
 
 ### Ficha 2: groupBy
 • **Qué hace:** agrupa los elementos en un mapa donde la clave es el resultado de la lambda.
+
 • **Qué función anónima recibe:** recibe un producto y devuelve la clave del grupo.
+
 • **Ejemplo:**
 ```scala
 productos.groupBy(_.categoria).map { case (c, ps) => c -> ps.map(_.nombre) }
@@ -201,7 +205,9 @@ productos.groupBy(_.categoria).map { case (c, ps) => c -> ps.map(_.nombre) }
 
 ### Ficha 3: partition
 • **Qué hace:** divide la lista en dos, los que cumplen una condición y los que no.
+
 • **Qué función anónima recibe:** recibe un producto y devuelve Boolean.
+
 • **Ejemplo:**
 ```scala
 val (pocos, suficientes) = productos.partition(_.stock < 10)
@@ -209,4 +215,19 @@ val (pocos, suficientes) = productos.partition(_.stock < 10)
 //val pocos: List[Producto] = List(Producto(Laptop,Electronica,850.0,5), Producto(Silla,Muebles,130.0,8), Producto(Escritorio,Muebles,250.0,4))
 //val suficientes: List[Producto] = List(Producto(Mouse,Electronica,20.0,60), Producto(Teclado,Electronica,45.0,30), Producto(Monitor,Electronica,220.0,12), Producto(Lampara,Muebles,35.0,25), Producto(Cuaderno,Papeleria,3.5,200), Producto(Esfero,Papeleria,0.8,500), Producto(Mochila,Accesorios,40.0,15))
 ```
-• **Problema que resuelve:** armar un reporte de productos por categoría. Es un tipo nuevo (agrupación), parecido a la selección aplicada a todos los valores posibles a la vez.
+• **Problema que resuelve:** separar los productos que hay que reabastecer de los que no. Se parece a la selección (filter), pero conserva los dos grupos en una sola pasada.
+
+### Ficha 4: Find
+• **Qué hace:** busca el primer elemento de la lista que cumple una condición y se detiene ahi, devuelve un Option: Some(elemento) si lo encuentra y None si no hay ninguno.
+
+• **Qué función anónima recibe:** recibe un producto y devuelve Boolean.
+
+• **Ejemplo:**
+```scala
+productos.find(p => p.categoria == "Muebles").map(_.nombre)
+productos.find(p => p.precio > 1000)
+//salida
+//val res2: Option[String] = Some(Silla)
+//val res3: Option[Producto] = None
+```
+• **Problema que resuelve:** localizar un solo producto que cumpla una condición como podria ser el primer mueble del inventario o algún producto de más de 1000 dolares, se parece al tipo Selección (filter), pero devuelve solo el primer resultado y no una lista, con el Option también sirve para validar porque None significa que no existe ninguno.
