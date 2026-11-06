@@ -242,5 +242,31 @@ productos.find(p => p.precio > 1000)
 
 **Respuesta**
 ```scala
-
+productos
+  .groupBy(p => p.categoria)                      // 1
+  .map(g => (g._1, g._2.map(p => p.stock).sum))   // 2
+  .filter(t => t._2 > 50)                         // 3
+  .toList
+  .sortBy(t => -t._2)                             // 4
+//salida: List((Papeleria,700), (Electronica,107))
 ```
+1. groupBy (nueva) forma un grupo de productos por categoría.
+
+2. map (vista en clase) reemplaza cada grupo por la suma de sus stocks.
+
+3. filter (vista en clase) deja solo las categorías con más de 50 unidades.
+
+4. sortBy (nueva) ordena de mayor a menor stock (se usa el signo negativo).
+
+Tras groupBy cada elemento es una pareja, g._1 es la categoría y g._2 es la lista de sus productos despues del paso 2, t._1 es la categoría y t._2 es el stock total, que es lo que se filtra (paso 3) y se ordena (paso 4).
+
+Resultado: Papelería con 700 y Electrónica con 107. Muebles (37) y Accesorios (15) quedan fuera.
+
+## Parte 5. Comparar y concluir
+| Criterio | Scala | Java | Python |
+|---|---|---|---|
+| Sintaxis de la lambda | `p => p.precio > 100` o `_.precio` | `p -> p.precio() > 100` | `lambda p: p.precio > 100` |
+| Cómo se declara el tipo | Se infiere; se puede anotar `(p: Producto) =>` | Se infiere del contexto del Stream | No se declara (tipado dinámico) |
+| Operaciones con listas | Muchas métodos directos en la lista (filter, map, groupBy, partition, foldLeft...) | Se necesita `.stream()` y terminar con `.toList()` o `collect` | Funciones sueltas (map, filter, max, reduce) y comprensiones de listas |
+| Restricción del lenguaje | Ninguna importante para este trabajo | Solo una expresión o bloque con llaves; las variables capturadas deben ser efectivamente finales | La lambda solo puede contener una expresión (sin sentencias) |
+| Legibilidad (opinión) | Alta, es la más corta | Media, más verboso | Alta para casos simples, baja si se anidan varias lambdas |
