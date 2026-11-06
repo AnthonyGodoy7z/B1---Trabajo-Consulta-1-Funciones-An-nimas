@@ -74,3 +74,40 @@ Para cada tipo de problema documenta:
 
 **Seleccion(filter)**
 
+Situación real: una tienda quiere listar los productos que cuestan más de 100 dolares para una promoción.
+
+**Scala**
+```scala
+productos.filter(_.precio < 100).map(_.nombre)
+```
+Salida: List(Mouse, Teclado, Lampara, Cuaderno, Esfero, Mochila)
+
+**Transformación(map)**
+
+Situación real: el área de contabilidad necesita el valor de inventario de cada producto (precio por stock).
+
+**Scala**
+```scala
+productos.map(p => p.precio * p.stock)
+```
+Salida: List(4250.0, 1200.0, 1350.0, 2640.0, 1040.0, 1000.0, 875.0, 700.0, 400.0, 600.0)
+
+**Validación(exists, forall)**
+
+Situación real: antes de una auditoría, se quiere saber si algún producto cuesta más de $800 y si todos tienen stock.
+**Scala**
+```scala
+productos.exists(_.precio > 800)
+productos.forall(_.stock > 0)
+```
+Salida: true y true
+
+**Conteo(count)**
+
+Situación real: el bodeguero quiere saber cuántos productos tienen menos de 10 unidades para reabastecer.
+
+**Scala**
+```scala
+productos.count(_.stock < 10)
+```
+Salida: Int = 3
