@@ -15,6 +15,7 @@ val counts = textFile.flatMap(line => line.split(" "))
                      .reduceByKey(_ + _)
 ```
 flatMap separa cada línea en palabras, map convierte cada palabra en el par (palabra, 1) y reduceByKey suma los unos de cada palabra, las tres operaciones reciben una función anónima.
+
 **TWITTER BACKEND**
 
 Twitter hizo una migracion a Scala de su backend para que se pueda manejar de mejor manera toda la concurrecia de datos con codigo mas corto y que se menos mutable. La ventaja es el estilo funcional que usan como colecciones inmutables y funciones como valores, reduciendo los errores en los sistemes concurrentes.
