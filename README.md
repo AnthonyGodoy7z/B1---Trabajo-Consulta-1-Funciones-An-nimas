@@ -14,6 +14,7 @@ val counts = textFile.flatMap(line => line.split(" "))
                      .map(word => (word, 1))
                      .reduceByKey(_ + _)
 ```
+flatMap separa cada línea en palabras, map convierte cada palabra en el par (palabra, 1) y reduceByKey suma los unos de cada palabra, las tres operaciones reciben una función anónima.
 **TWITTER BACKEND**
 
 Twitter hizo una migracion a Scala de su backend para que se pueda manejar de mejor manera toda la concurrecia de datos con codigo mas corto y que se menos mutable. La ventaja es el estilo funcional que usan como colecciones inmutables y funciones como valores, reduciendo los errores en los sistemes concurrentes.
@@ -286,5 +287,5 @@ Resultado: Papelería con 700 y Electrónica con 107. Muebles (37) y Accesorios 
 **¿En qué tipo de problema encontraste más diferencias entre lenguajes y por qué?** En el conteo ya que en Scala, count recibe la lambda directamente, en Java hay que usar filter y luego count() que devuelve un long, y en Python hay que usar filter, convertirlo a lista y aplicar len. La misma pregunta se resuelve con una operación en Scala, dos en Java y tres en Python.
 
 ### Conclusiones
-Las funciones anónimas permiten separar qué se hace con la lista (recorrer, filtrar, sumar) de cómo se decide cada caso, con ellas no se escriben ciclos ni variables auxiliares, se pasa la regla como argumento y la operación hace el recorrido haciendo producir código más corto, más fácil de leer y con menos errores y se aplica igual a una lista de 10 elementos que a millones.
-El caso de Apache Spark lo muestra, en el conteo de palabras, flatMap, map y reduceByKey reciben lambdas pequeñas, y Spark puede ejecutarlas en paralelo en muchas máquinas porque cada lambda no depende del resto. Es la misma idea que usamos en la Parte 3 con filter y foldLeft, solo que a mayor escala.
+Las funciones anónimas permiten pasar la regla (la condición o la transformación) como argumento, sin escribir ciclos ni variables auxiliares, en este trabajo, seleccionar, transformar, validar y contar productos se resolvió con una lambda de una línea, y en la Parte 4 las operaciones nuevas se encadenaron con filter y map cada una con su propia lambda.
+Apache Spark aplica la misma idea a gran escala, en el conteo de palabras, flatMap, map y reduceByKey reciben lambdas que se ejecutan en paralelo en el clúster, scala fue el lenguaje más directo pero en los tres el principio es el mismo.
