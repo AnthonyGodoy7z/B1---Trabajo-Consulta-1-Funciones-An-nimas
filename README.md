@@ -82,6 +82,13 @@ productos.filter(_.precio < 100).map(_.nombre)
 ```
 Salida: List(Mouse, Teclado, Lampara, Cuaderno, Esfero, Mochila)
 
+**Java**
+```Java
+List<String> mas100 = productos.stream().filter(p -> p.precio() > 100).map(Producto::nombre).toList();
+System.out.println("Selección: " + mas100 + "\n");
+```
+Salida: Selección: [Laptop, Monitor, Silla, Escritorio]
+
 **Transformación(map)**
 
 Situación real: el área de contabilidad necesita el valor de inventario de cada producto (precio por stock).
@@ -92,9 +99,17 @@ productos.map(p => p.precio * p.stock)
 ```
 Salida: List(4250.0, 1200.0, 1350.0, 2640.0, 1040.0, 1000.0, 875.0, 700.0, 400.0, 600.0)
 
-**Validación(exists, forall)**
+**Java**
+```java
+List<Double> inventario = productos.stream().map(p -> p.precio() * p.stock()).toList();
+System.out.println("Transformacion: " + inventario + "\n");
+```
+Salida: Transformacion: [4250.0, 1200.0, 1350.0, 2640.0, 1040.0, 1000.0, 875.0, 700.0, 400.0, 600.0]
+ 
+### Validación(exists, forall)
 
 Situación real: antes de una auditoría, se quiere saber si algún producto cuesta más de $800 y si todos tienen stock.
+
 **Scala**
 ```scala
 productos.exists(_.precio > 800)
@@ -102,7 +117,17 @@ productos.forall(_.stock > 0)
 ```
 Salida: true y true
 
-**Conteo(count)**
+**Java**
+```java
+List<Boolean> validacion = List.of(
+                productos.stream().anyMatch(p -> p.precio() > 800),
+                productos.stream().allMatch(p -> p.stock() > 0)
+        );
+System.out.println("Validación: " + validacion + "\n");
+```
+Salida: Validación: [true, true]
+
+### Conteo(count)
 
 Situación real: el bodeguero quiere saber cuántos productos tienen menos de 10 unidades para reabastecer.
 
@@ -111,3 +136,10 @@ Situación real: el bodeguero quiere saber cuántos productos tienen menos de 10
 productos.count(_.stock < 10)
 ```
 Salida: Int = 3
+
+**Java**
+```java
+long pocos = productos.stream().filter(p -> p.stock() < 10).count();
+System.out.println("Conteo: " + pocos + "\n");
+```
+Salida: Contero: 3
