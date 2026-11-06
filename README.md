@@ -171,3 +171,42 @@ Salida: Conteo: 3
 
 ## Parte 4 – Ampliar: cuatro operaciones nuevas
 Las operaciones vistas en clase (map, filter, exists, forall, count, maxBy, minBy, flatMap, foldLeft y scanLeft) son solo una parte de lo que ofrecen las colecciones. Investiga 4 operaciones diferentes a estas que te parezcan útiles para resolver problemas.
+
+### 4.1 Elige tus operaciones
+Puedes elegir entre las siguientes o proponer otras que encuentres en la documentación de Scala:
+
+<img width="708" height="210" alt="image" src="https://github.com/user-attachments/assets/2aac9f29-6f4d-43c6-838b-388ad14663b8" />
+
+### 4.2 Ficha de cada operación
+
+### Ficha 1: sortBy
+• **Qué hace:** ordena la lista según un criterio, de menor a mayor.
+• **Qué función anónima recibe:** recibe un producto y devuelve el valor por el que se ordena (Double, Int, String).
+• **Ejemplo:**
+```scala
+productos.sortBy(_.precio).map(_.nombre)
+//salida: List(Esfero, Cuaderno, Mouse, Lampara, Mochila, Teclado, Silla, Monitor, Escritorio, Laptop)
+```
+• **Problema que resuelve:** mostrar un catálogo de más barato a más caro. Es un tipo nuevo (ordenamiento).
+
+### Ficha 2: groupBy
+• **Qué hace:** agrupa los elementos en un mapa donde la clave es el resultado de la lambda.
+• **Qué función anónima recibe:** recibe un producto y devuelve la clave del grupo.
+• **Ejemplo:**
+```scala
+productos.groupBy(_.categoria).map { case (c, ps) => c -> ps.map(_.nombre) }
+//salida: HashMap(Muebles -> List(Silla, Escritorio, Lampara), Accesorios -> List(Mochila), Electronica -> List(Laptop, Mouse, Teclado, Monitor), Papeleria -> List(Cuaderno, Esfero))
+```
+• **Problema que resuelve:** armar un reporte de productos por categoría. Es un tipo nuevo (agrupación), parecido a la selección aplicada a todos los valores posibles a la vez.
+
+### Ficha 3: partition
+• **Qué hace:** divide la lista en dos, los que cumplen una condición y los que no.
+• **Qué función anónima recibe:** recibe un producto y devuelve Boolean.
+• **Ejemplo:**
+```scala
+val (pocos, suficientes) = productos.partition(_.stock < 10)
+//salida
+//val pocos: List[Producto] = List(Producto(Laptop,Electronica,850.0,5), Producto(Silla,Muebles,130.0,8), Producto(Escritorio,Muebles,250.0,4))
+//val suficientes: List[Producto] = List(Producto(Mouse,Electronica,20.0,60), Producto(Teclado,Electronica,45.0,30), Producto(Monitor,Electronica,220.0,12), Producto(Lampara,Muebles,35.0,25), Producto(Cuaderno,Papeleria,3.5,200), Producto(Esfero,Papeleria,0.8,500), Producto(Mochila,Accesorios,40.0,15))
+```
+• **Problema que resuelve:** armar un reporte de productos por categoría. Es un tipo nuevo (agrupación), parecido a la selección aplicada a todos los valores posibles a la vez.
