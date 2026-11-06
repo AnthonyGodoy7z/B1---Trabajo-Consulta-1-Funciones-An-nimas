@@ -198,8 +198,13 @@ productos.sortBy(_.precio).map(_.nombre)
 
 • **Ejemplo:**
 ```scala
-productos.groupBy(_.categoria).map { case (c, ps) => c -> ps.map(_.nombre) }
-//salida: HashMap(Muebles -> List(Silla, Escritorio, Lampara), Accesorios -> List(Mochila), Electronica -> List(Laptop, Mouse, Teclado, Monitor), Papeleria -> List(Cuaderno, Esfero))
+val porCategoria = productos.groupBy(p => p.categoria)
+porCategoria("Electronica").map(p => p.nombre)  // List(Laptop, Mouse, Teclado, Monitor)
+porCategoria("Muebles").map(p => p.nombre)      // List(Silla, Escritorio, Lampara)
+porCategoria("Papeleria").map(p => p.nombre)    // List(Cuaderno, Esfero)
+porCategoria("Accesorios").map(p => p.nombre)   // List(Mochila)
+//salida
+
 ```
 • **Problema que resuelve:** armar un reporte de productos por categoría. Es un tipo nuevo (agrupación), parecido a la selección aplicada a todos los valores posibles a la vez.
 
@@ -231,3 +236,11 @@ productos.find(p => p.precio > 1000)
 //val res3: Option[Producto] = None
 ```
 • **Problema que resuelve:** localizar un solo producto que cumpla una condición como podria ser el primer mueble del inventario o algún producto de más de 1000 dolares, se parece al tipo Selección (filter), pero devuelve solo el primer resultado y no una lista, con el Option también sirve para validar porque None significa que no existe ninguno.
+
+### 4.3 Combinar operaciones
+**Pregunta:** ¿Qué categorías tienen más de 50 unidades de stock en total, ordenadas de mayor a menor stock?
+
+**Respuesta**
+```scala
+
+```
